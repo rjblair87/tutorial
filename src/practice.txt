@@ -1,0 +1,558 @@
+PROPS
+
+function App() {
+  return (
+    <div className="App">
+     <Jobs salary ={1000} position ="manager" company="pepsi" />
+     <Jobs salary ={100000} position ="worker" company="pepsi" />
+     <Jobs salary ={10000984} position ="accounting" company="pepsi" />
+     <Jobs salary ={100084847} position ="freaksRus" company="pepsi" />
+    </div>
+  );
+}
+
+const Jobs = (props) =>{
+return(
+  <div>
+    <h1>{props.salary}</h1>
+    <h1>{props.position}</h1>
+    <h1>{props.company}</h1>
+  </div>
+)
+}
+
+width: 1024px;
+  
+onClick={() => {
+setPaymentModal(true);
+}}
+
+
+{paymentModal && <Modal closeModal={setPaymentModal}/>}
+
+
+
+terinary operator if/then/else
+<div className='App'>
+      {age >= 18 ? <h1>Over Age</h1> : <h1>Under Age</h1>}
+    </div>
+
+function App() {
+  const age = 15;
+  const isGreen = true;
+
+  return (
+    <div className='App'>
+      {age >= 18 ? <h1>Over Age</h1> : <h1>Under Age</h1>}
+      <h1 style={{color: isGreen ? "green":"red"}}>This has color</h1>
+      {isGreen && <button>button</button>}
+    </div>
+  )
+}
+export default App;
+
+import * as React from 'react';
+
+import './App.css';
+import {User} from './User';
+
+
+
+function App() {
+  const users = [
+    {name: "ryan", age: 35},
+    {name: "sally", age: 25},
+    {name: "jim", age: 95}
+  ];
+  return <div className='App'>
+    {
+      users.map((users, key)=>{
+        return (
+        <User name = {users.name} age = {users.age}/>
+        )
+      })}
+  </div>
+};
+
+
+export default App;
+
+function App() {
+  const planets = [
+    { name: "Mars", isGasPlanet: false },
+    { name: "Earth", isGasPlanet: false },
+    { name: "Jupiter", isGasPlanet: true },
+    { name: "Venus", isGasPlanet: false },
+    { name: "Neptune", isGasPlanet: true },
+    { name: "Uranus", isGasPlanet: true },
+  ];
+  return <div>
+    {
+      planets.map((planets, key) =>{
+        if(planets.isGasPlanet)
+        return <h1>{planets.name}</h1>
+
+      })
+
+      }
+    
+  </div>
+
+  
+};
+
+function App() {
+
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = (event) => {
+    setInputValue.log(event.target.value)
+  }; 
+
+  return  (
+    <div className='App'>
+      <input type = "text" onChange={handleInputChange} />
+      {inputValue}
+      </div>
+
+  )
+};
+export default App;
+
+function App() {
+  const [showText, setShowTextValue] = useState(true);  
+  return  (
+    <div className='App'>
+      <button onClick={()=> {
+      setShowTextValue(!showText)
+      }}
+      >Show/Hide Text</button>
+      {showText && <h1>my name is pedro</h1>}
+      </div>
+
+  )
+};
+
+function App() {
+  let [count, setCount] = useState(0);  
+
+  const increaseCount = ()=>{
+    setCount(count+1)
+  };
+
+  const decrease = () => {
+    setCount(count-1)
+  };
+
+  const zero = () => {
+    setCount(count=0)
+  };
+  return  (
+    <div className='App'>
+      <button onClick={increaseCount}>Increase</button>
+      <button onClick={decrease}>Decrease</button>
+      <button onClick ={zero}>Set to Zero</button>
+      <div>{count}</div>
+      
+      </div>
+
+  )
+};
+export default App;
+
+********TODO LIST APPLICATIONS*********
+
+mport * as React from 'react';
+
+import './App.css';
+import {useState} from "react";
+
+function App() {
+  const [todoList, setTodoList] = useState([]);
+  const [newTask, setNewTask] = useState("");
+
+  const handleChange = (event) => {
+    setNewTask(event.target.value);
+  };
+
+  const addTask = () => {
+    const task = {
+      id: todoList.length === 0 ? 1 : todoList[todoList.length - 1].id + 1,
+      taskName: newTask,
+      complete: false
+    };
+    
+    setTodoList([...todoList, task]);
+  };
+
+  const deleteTask = (id) => {
+    setTodoList(todoList.filter((task) => task.id !== id));
+  
+  }
+
+  const completeTask = (id) => {
+    setTodoList(
+      todoList.map((task) =>{
+        if (task.id === id){
+          return {...task, complete: true}
+        }else{
+          return task;
+        }
+      }
+      )
+    )
+  }
+  return  (
+    <div className='App'>
+      <div className = "addTask">
+        <input onChange={handleChange}/>
+        <button onClick={addTask}>Add Task</button>
+      </div>
+      <div className='list'>
+      {todoList.map((task) => {
+        return <div className='task' style={{backgroundColor:task.complete ? "green" : "white" }}>
+          <h1>{task.taskName}</h1> 
+          <button onClick={() => deleteTask(task.id)}>delete</button>
+          <button onClick={() => completeTask(task.id)}>Complete</button>
+          </div>
+      })}
+      </div>
+      
+      </div>
+
+  )
+};
+export default App;
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.name{
+  color: red;
+}
+
+.App {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.addTask {
+  height: 30vh;
+  background-color: dodgerblue;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: 50px;
+  flex-direction: column;
+}
+
+.task {
+  width: 500px;
+  height: 50px;
+  display: flex;
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task button {
+  width: auto;
+  height: 20px;
+  margin-left: 5px;
+  text-align: center;
+}
+
+
+import React, { useEffect } from "react";
+import { useState} from "react";
+import { addDoc, collection } from "firebase/firestore";
+import { db, auth, storage } from "../firebase-config"
+import {useNavigate} from "react-router-dom";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
+ export function Create({isAuth}) {
+    const [foundation, setFoundation] = useState("")
+    const [discription, setDiscription] = useState("")
+    const [amountRequested, setAmountRequested] = useState("")
+    const [date, setDate] = useState("")
+    
+    const [image, setImage] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
+    
+
+    const handleImageChange = (e) => {
+        if (e.target.files[0]) {
+          setImage(e.target.files[0]);
+        }
+      };
+    
+      const handleImageUpload = async () => {
+        const storageRef = ref(storage, `images/${image.name}`);
+        const uploadTask = uploadBytes(storageRef, image);
+    
+        uploadTask.on(
+          "state_changed",
+          null,
+          (error) => {
+            console.error("Error uploading image: ", error);
+          },
+          async (snapshot) => {
+            const downloadURL = await getDownloadURL(snapshot.ref);
+            setImageUrl(downloadURL);          
+            }
+        );
+      };
+
+    const donationCollectionRef = collection(db, "donations")
+    let navigate = useNavigate();
+    const createPost = async () => {
+        await addDoc(
+        donationCollectionRef,{
+        foundation, 
+        discription, 
+        amountRequested, 
+        date,
+        imageUrl,
+        user: {name: auth.currentUser.displayName , id: auth.currentUser.uid },
+        
+    });
+    navigate("/donations");
+    };
+    
+    useEffect(() => {
+        if (!isAuth) {
+            navigate("/login")
+        };
+
+    });
+
+    return <div className = " donationContainer">
+        <div className="createDonationPage">
+            <h1>Create Donation</h1>
+            <div className="inputGP">
+                <label>Foundation Name   </label>
+                <input 
+                onChange = {(event)=> {
+                setFoundation(event.target.value);
+                }} 
+                />
+            </div>
+            <div className="inputGP">
+            <label>Description</label>
+                <textarea
+                onChange = {(event)=> {
+                    setDiscription(event.target.value);
+                }} 
+                 />
+            </div>
+            <div className="inputGP">
+                <label>Amount Requested</label>
+                <input 
+                 onChange = {(event)=> {
+                    setAmountRequested(event.target.value);
+                }} 
+                />                
+            </div>
+            <div className="inputGP">
+                <label>Date Needed By</label>
+                <input type="date" 
+                 onChange = {(event)=> {
+                    setDate(event.target.value);
+                }} 
+                />                
+            </div>
+            <div className="inputGP">
+                <label >Upload Picture</label>
+                <input type= "file" onChange={handleImageChange} />
+                <button onClick={handleImageUpload}> Upload </button>
+                
+            </div>
+            <div className="App">
+                <button className="button" onClick={createPost}> Submit Request</button>
+            </div>
+        </div>
+    </div>;
+};
+
+export default Create;
+
+
+
+
+import React from "react";
+import {auth, provider} from "../firebase-config";
+import {signInWithPopup} from 'firebase/auth';
+import {useNavigate} from "react-router-dom";
+import "../App.css";
+
+
+
+function Login({setIsAuth}) {
+    let navigate = useNavigate();
+ const signInWithGoogle = () => {
+        signInWithPopup(auth, provider).then((result) => {
+            localStorage.setItem("isAuth", true);
+            setIsAuth(true);
+            navigate("/");
+        });
+        };
+    return <div className="loginContainer">
+        <p> sign in with google</p>
+        <button className="login with google" onClick={signInWithGoogle}>Sign in with Google</button>
+        </div>;
+};
+
+
+export default Login;
+
+
+
+
+import React, { useEffect } from "react";
+import { getDocs, collection, query, where } from "firebase/firestore";
+import { db,auth } from "../firebase-config";
+import { useState } from "react";
+import {useNavigate} from "react-router-dom";
+
+export function Manage() {
+    const [donationList, setDonationList] = useState([]);
+    const [paymentModal, setPaymentModal] = useState(false);
+    const donationCollectionRef = collection(db, "donations");
+    
+    let navigate = useNavigate();
+  
+    const paymentPage = () => {
+      window.location.pathname = "/payment";
+      };
+  
+    useEffect(() => {
+      const getDonations = async () => {
+        const currentUser = auth.currentUser.uid;
+        const data = await getDocs(donationCollectionRef, where("user.id", "==", currentUser.uid));
+        setDonationList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      };
+      getDonations();
+    });
+  
+    return (
+      <div>
+        {donationList.map((donations) => {
+          return (
+            <div className="donationContainer">
+              <div className="imageSize"> 
+                <img src = {donations.imageUrl}/>
+              </div>
+              <div>
+                <h1>{donations.foundation}</h1>
+              </div>
+              <div>{donations.discription}</div>
+              <div>Amount Requested ${donations.amountRequested}</div>
+              <div>{donations.date}</div>
+              <div className="App">
+                <button className="button" onClick={
+                  paymentPage
+                }>
+                  Donate Now!!
+                </button>
+              </div>
+            </div>
+          );
+        })}
+        
+  
+      </div>
+    );
+  }
+  
+  export default Manage;
+
+
+  .homeContainerWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 5px;
+   /* set a fixed width */
+  margin: 5px; /* center the container horizontally */
+  direction: ltr;
+  margin-left: 26%;
+  position: absolute;
+}
+
+
+
+
+
+.homeContainer {
+  flex-basis: calc(29% - 20px); /* adjust as necessary */
+  margin: 1px 1px;
+  display: flex;
+  flex-direction:column;
+  flex-shrink: 1;
+  height: auto;
+  width: auto;
+  
+
+  background-color: #f5f5f5;
+  padding: 0px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 15px;
+  padding: 20px;
+
+  direction: ltr;
+  height:auto;
+  
+}
