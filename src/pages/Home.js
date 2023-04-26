@@ -43,7 +43,7 @@ export function Home() {
               <div className="homeText">{donation.discription}</div>
               <div className="homeText">Amount Requested ${donation.amountRequested}</div>
               <div className="homeText">{donation.date}</div>
-              <div className="App">
+              <div className="controlButton">
                 <button className="homeButton" onClick={paymentPage}>
                   Donate Now!!
                 </button>
