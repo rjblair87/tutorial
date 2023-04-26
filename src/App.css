@@ -249,13 +249,6 @@ textarea {
   
 }
 
-/*
-  Create .controlButton class to style the Donate Now button and center it to each card.
-  If the cards get smaller, the button will still be centered.
-  If the cards gets bigger, the button will still be centered.
-  Change the button size as needed to fit the card.
-*/
-
 .controlButton {
   display: flex;
   justify-content: center;
