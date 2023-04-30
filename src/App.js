@@ -8,7 +8,6 @@ import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Donations from "./pages/Donations";
 import Login from "./pages/Login";
-import Modal from "./Components/Modal";
 import Payment from "./pages/payment";
 import Manage from "./pages/Manage";
 import { useState } from "react";
@@ -22,12 +21,12 @@ function App() {
     signOut(auth).then(() => {
       localStorage.clear();
       setIsAuth(false);
-
+      console.log("User logged out")
       window.location.pathname = "/login";
     });
   };
   return (
-    <div  className="bg">
+    
       <Router>
         <nav>
           <Link to="/"> Home </Link>
@@ -48,14 +47,12 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<Create isAuth={isAuth} />} />
           <Route path="/donations" element={<Donations />}/>
-          <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />  
           <Route path="/payment" element={<Payment />}/>
           <Route path="/manage" element={<Manage />}/>
-
-
+          <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />     
         </Routes>
       </Router>
-    </div>
+    
   );
 }
 
