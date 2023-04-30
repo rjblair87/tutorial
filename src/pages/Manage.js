@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function Manage() {
   const [donationList, setDonationList] = useState([]);
-  const [paymentModal, setPaymentModal] = useState(false);
+  
   const donationCollectionRef = collection(db, "donations");
 
   const currentUser = auth.currentUser.uid;

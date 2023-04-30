@@ -10,8 +10,8 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
     const [discription, setDiscription] = useState("")
     const [amountRequested, setAmountRequested] = useState("")
     const [date, setDate] = useState("")
-    const [recieved, setRecieved] = useState(0);
-    const [donationsMade, setDonationsMade] = useState(0)
+    const [received] = useState(0);
+    const [donationsMade] = useState(0)
     
     const [image, setImage] = useState("");
     const [imageUrl, setImageUrl] = useState("");
@@ -38,7 +38,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
     const donationCollectionRef = collection(db, "donations")
     let navigate = useNavigate();
-    const createPost = async () => {
+    const createDonation = async () => {
         await addDoc(
         donationCollectionRef,{
         foundation, 
@@ -46,12 +46,13 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
         amountRequested, 
         date,
         imageUrl,
-        recieved,
+        received,
         donationsMade,
-        user: {name: auth.currentUser.displayName , id: auth.currentUser.uid },
-        
+        user: {name: auth.currentUser.displayName , id: auth.currentUser.uid }
+
+
     });
-    console.log("Successfully added to the console");
+    console.log("Successfully added to the database");
 
     navigate("/donations");
     };
@@ -66,7 +67,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
     });
 
-    return <div className = " donationContainer">
+    return <div className = " createContainer">
         <div className="createDonationPage">
             <h1>Create Donation</h1>
             <div className="inputGP">
@@ -115,7 +116,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
             </div>
             }
             <div className="App">
-                <button className="button" onClick={createPost}> Submit Request</button>
+                <button className="button" onClick={createDonation}> Submit Request</button>
             </div>
         </div>
     </div>;

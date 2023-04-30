@@ -15,12 +15,11 @@ function Login({setIsAuth}) {
         signInWithPopup(auth, provider).then((result) => {
             localStorage.setItem("isAuth", true);
             setIsAuth(true);
+            console.log("User Authenticated");
             navigate("/");
         });
         };
-        const createAccount = () => {
-            setSignUp(true);
-          };
+        
     return <div className="loginContainer">
         <div>
             <label>Email:</label>
@@ -37,7 +36,7 @@ function Login({setIsAuth}) {
         <button className="login-with-google-btn" onClick={signInWithGoogle}>Sign in with Google</button>
         </div>
         <div>Don't have an account?</div>
-        <button onClick={createAccount}>Create an Account</button>
+        <button >Create an Account</button>
         
         
         </div>;

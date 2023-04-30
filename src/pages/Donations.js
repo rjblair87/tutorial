@@ -2,18 +2,24 @@ import React, { useEffect } from "react";
 import { getDocs, collection, query, where } from "firebase/firestore";
 import { db, auth } from "../firebase-config";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 
-function Donations() {
+export function Donations() {
   const [donationList, setDonationList] = useState([]);
-  const [paymentModal, setPaymentModal] = useState(false);
+  const [donationID, setDonationID] = useState(null);
   const donationCollectionRef = collection(db, "donations");
 
-  const navigate = useNavigate();
+  let navigate = useNavigate();
 
-  const paymentPage = () => {
-    window.location.pathname = "/payment";
+  const paymentPage = (id) => {
+    setDonationID(id)
+    console.log("donationID" , id)
+    navigate("/payment",{
+      state: { donationID: id }
+    });
   };
+  
+  
 
   useEffect(() => {
     const getDonations = async () => {
@@ -40,7 +46,7 @@ function Donations() {
             <div>{donation.date}</div>
             {auth.currentUser && auth.currentUser.uid === donation.user.id && (
               <div className="App">
-                <button className="button" onClick={paymentPage}>
+                <button className="button" onClick={() => paymentPage(donation.id)}>
                   Donate Now!!
                 </button>
               </div>
@@ -53,5 +59,3 @@ function Donations() {
 }
 
 export default Donations;
-
-

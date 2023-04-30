@@ -1,7 +1,7 @@
 import React from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import { db } from "../firebase-config";
 
 
@@ -15,27 +15,30 @@ export function Home() {
     let navigate = useNavigate();
   
     const paymentPage = () => {
-      window.location.pathname = "/payment";
+      navigate("/payment");
     };
   
     useEffect(() => {
       const getDonations = async () => {
         const data = await getDocs(donationCollectionRef);
         setDonationList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        console.log("data received");
       };
-      console.log("data received");
+      
       getDonations();
     }, []);
   
     const topDonations = donationList.sort((a, b) => b.amountRequested - a.amountRequested).slice(0, 6);
   
     return (
+      
+      <div className="homePage">
       <div className="homeContainerWrapper">
         {topDonations.map((donation) => {
           return (
             <div className="homeContainer" key={donation.id}>
               <div className="imageSize"> 
-                <img src={donation.imageUrl} alt={donation.foundation}/>
+                <img src={donation.imageUrl} alt={null}/>
               </div>
               <div>
                 <h1 className="home">{donation.foundation}</h1>
@@ -52,6 +55,8 @@ export function Home() {
           );
         })}
       </div>
+      </div>
+      
     );
   }
   
