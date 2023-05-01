@@ -68,7 +68,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
     });
 
     return <div className = " createContainer">
-        <div className="createDonationPage">
+        <div >
             <h1>Create Donation</h1>
             <div className="inputGP">
                 <label>Foundation Name   </label>
@@ -106,7 +106,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
             <div className="inputGP">
                 <label >Upload Picture</label>
                 <input type= "file" onChange={handleImageChange} />
-                <button onClick={handleImageUpload}> Upload </button>
+                <button className="uploadButton" onClick={handleImageUpload}> Upload </button>
                 {loading && <div className="spinner">Loading...</div>}                
             </div> ) :
             <div className="upload">

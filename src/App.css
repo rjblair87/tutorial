@@ -143,15 +143,16 @@ a {
 }
 
 .createContainer {
-  width: 49%;
+  width: 60%;
   height: auto;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin: 20px;
   padding: 20px;
   border-radius: 15px;
-  margin-left: 35%;
+  margin-left: 25%;
   background-color: grey;
   position: static;  
+  justify-content: left;
 }
 
 .paymentContainer {
@@ -231,4 +232,22 @@ img {
   font-style: italic;
   color: white;
   text-align: center;
+}
+
+.uploadButton{
+  background-color: black; 
+  border: none;
+  color: white;
+  padding: 1% 1%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  opacity: 1;
+}
+
+.uploadButton:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  cursor: pointer;
 }
