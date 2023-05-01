@@ -26,7 +26,7 @@ function App() {
     });
   };
   return (
-    
+    <div className="bg">
       <Router>
         <nav>
           <Link to="/"> Home </Link>
@@ -52,6 +52,7 @@ function App() {
           <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />     
         </Routes>
       </Router>
+      </div>
     
   );
 }

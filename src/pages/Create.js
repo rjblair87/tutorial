@@ -107,9 +107,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
                 <label >Upload Picture</label>
                 <input type= "file" onChange={handleImageChange} />
                 <button onClick={handleImageUpload}> Upload </button>
-                {loading && <div className="spinner">Loading...</div>}
-
-                
+                {loading && <div className="spinner">Loading...</div>}                
             </div> ) :
             <div className="upload">
                 {image.name} uploaded 
@@ -121,6 +119,5 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
         </div>
     </div>;
 };
-
 
 export default Create;

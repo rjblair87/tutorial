@@ -5,14 +5,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Manage() {
-  const [donationList, setDonationList] = useState([]);
-  
+  const [donationList, setDonationList] = useState([]);  
   const donationCollectionRef = collection(db, "donations");
-
   const currentUser = auth.currentUser.uid;
-
- 
-
+  
   const deleteRequest = async (id) => {
     const donationDoc = doc(db, "donations", id);
     await deleteDoc(donationDoc);

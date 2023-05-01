@@ -1,10 +1,6 @@
 import { useLocation } from "react-router-dom";
 import React, { useEffect } from "react";
 import {
-  getDocs,
-  collection,
-  query,
-  where,
   doc,
   updateDoc,
   getDoc,
@@ -60,7 +56,7 @@ export function Payment() {
               </div>
               <div>
                 Credit Card
-                <input></input>
+                <input size = {16}></input>
               </div>
               <div>
                 Expiration

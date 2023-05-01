@@ -19,8 +19,6 @@ export function Donations() {
     });
   };
   
-  
-
   useEffect(() => {
     const getDonations = async () => {
       const data = await getDocs(donationCollectionRef);
