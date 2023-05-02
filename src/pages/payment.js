@@ -16,7 +16,7 @@ export function Payment() {
 
   const [received, setReceived] = useState(0);
   const [isPaymentSubmitted, setIsPaymentSubmitted] = useState(false);
-  const [confirmationNumber, setConfirmationNumber] = useState(null); // Add state variable
+  const [confirmationNumber, setConfirmationNumber] = useState(null); 
 
   const handlePayment = async (event) => {
     event.preventDefault();
